@@ -1,0 +1,215 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Simplified Chinese — Stickachu</title><style>/* ── STICKACHU GLOBAL STYLES ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400&display=swap');
+
+:root {
+  --ink:#0e0c08; --ink2:#1e1b13; --sand:#f5f1e8; --sand2:#ede8d8;
+  --sand3:#e2dcc8; --parchment:#faf7f0; --gold:#b8860b; --gold2:#d4a017;
+  --gold3:#f0c84a; --white:#fffef9; --muted:#7a7160; --muted2:#a09880;
+  --border:rgba(14,12,8,0.08); --border2:rgba(14,12,8,0.14);
+  --border-gold:rgba(184,134,11,0.25);
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fs:'Syne',sans-serif;
+  --fm:'DM Mono',monospace;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth }
+body { background:var(--parchment); color:var(--ink); font-family:var(--fs); line-height:1.6; overflow-x:hidden }
+
+/* ── SITE NAV ── */
+.snav {
+  position:sticky; top:0; width:100%; display:flex; align-items:center;
+  justify-content:space-between; padding:0 56px; height:72px;
+  background:rgba(250,247,240,.96); backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border2); z-index:999;
+}
+.snav-brand { text-decoration:none }
+.snav-logo { font-family:var(--fd); font-size:28px; font-weight:500; letter-spacing:.1em; color:var(--ink); display:block; line-height:1; text-transform:uppercase }
+.snav-sub { font-family:var(--fm); font-size:9px; letter-spacing:.25em; color:var(--gold); text-transform:uppercase; margin-top:2px; display:block }
+.snav-links { display:flex; gap:36px; list-style:none; align-items:center }
+.snav-links a { font-family:var(--fs); font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); text-decoration:none; position:relative; transition:color .2s }
+.snav-links a::after { content:''; position:absolute; bottom:-2px; left:0; right:100%; height:1px; background:var(--gold); transition:right .3s }
+.snav-links a:hover { color:var(--ink) }
+.snav-links a:hover::after { right:0 }
+.snav-links a.active { color:var(--ink) }
+.snav-links a.active::after { right:0 }
+.snav-cta { font-family:var(--fs); font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--white); background:var(--ink); padding:12px 28px; text-decoration:none; transition:background .2s }
+.snav-cta:hover { background:var(--gold) }
+
+/* ── FOOTER ── */
+.sfooter { background:var(--ink); color:var(--sand2); padding:80px 80px 40px }
+.sfooter-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:64px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:36px }
+.sfooter-logo { font-family:var(--fd); font-size:32px; font-weight:400; font-style:italic; letter-spacing:.06em; color:var(--sand); margin-bottom:4px }
+.sfooter-sub { font-family:var(--fm); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold3); margin-bottom:22px }
+.sfooter-desc { font-family:var(--fd); font-size:15px; font-weight:300; font-style:italic; color:rgba(237,232,216,.4); line-height:1.8; max-width:270px; margin-bottom:24px }
+.sfooter-socials { display:flex; gap:10px }
+.sfooter-soc { width:40px; height:40px; border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(237,232,216,.45); text-decoration:none; font-family:var(--fm); font-size:11px; transition:border-color .2s,color .2s }
+.sfooter-soc:hover { border-color:var(--gold); color:var(--gold3) }
+.sfooter-col-h { font-family:var(--fm); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold3); margin-bottom:22px; opacity:.8 }
+.sfooter-col ul { list-style:none }
+.sfooter-col li { margin-bottom:11px }
+.sfooter-col a { font-family:var(--fd); font-size:15px; font-weight:300; font-style:italic; color:rgba(237,232,216,.45); text-decoration:none; transition:color .2s }
+.sfooter-col a:hover { color:var(--sand) }
+.sfooter-bottom { display:flex; align-items:center; justify-content:space-between }
+.sfooter-legal { font-family:var(--fm); font-size:9px; letter-spacing:.1em; color:rgba(237,232,216,.2); line-height:1.8; max-width:500px }
+.sfooter-copy { font-family:var(--fm); font-size:9px; letter-spacing:.14em; color:rgba(237,232,216,.18) }
+
+/* ── BUTTONS ── */
+.btn-ink { font-family:var(--fs); font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--white); background:var(--ink); padding:16px 40px; text-decoration:none; border:1px solid var(--ink); transition:background .2s,transform .2s; display:inline-block; cursor:pointer }
+.btn-ink:hover { background:var(--gold); border-color:var(--gold); transform:translateY(-2px) }
+.btn-gold { font-family:var(--fs); font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); background:var(--gold); padding:16px 40px; text-decoration:none; border:1px solid var(--gold); transition:background .2s,transform .2s; display:inline-block; cursor:pointer }
+.btn-gold:hover { background:var(--gold2); border-color:var(--gold2); transform:translateY(-2px) }
+.btn-ghost { font-family:var(--fm); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border2); padding-bottom:3px; transition:color .2s,border-color .2s }
+.btn-ghost:hover { color:var(--gold); border-color:var(--gold) }
+
+/* ── PAGE HEADER ── */
+.page-header { padding:80px 80px 60px; border-bottom:1px solid var(--border) }
+.page-header-tag { font-family:var(--fm); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:flex; align-items:center; gap:14px }
+.page-header-tag::before { content:''; width:32px; height:1px; background:var(--gold); display:block }
+.page-header-title { font-family:var(--fd); font-size:clamp(48px,6vw,96px); font-weight:300; font-style:italic; color:var(--ink); line-height:.9; letter-spacing:-.01em }
+.page-header-sub { font-family:var(--fd); font-size:18px; font-weight:300; color:var(--muted); margin-top:20px; max-width:500px; line-height:1.7 }
+
+/* ── PRODUCT GRID ── */
+.product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px }
+.pg-card { background:var(--white); border:1px solid var(--border); overflow:hidden; text-decoration:none; display:block; transition:border-color .3s,transform .3s }
+.pg-card:hover { border-color:var(--border-gold); transform:translateY(-3px) }
+.pg-card:hover .pg-img { transform:scale(1.04) }
+.pg-card:hover .pg-cta { opacity:1; transform:translateY(0) }
+.pg-img-wrap { height:220px; overflow:hidden; position:relative; background:var(--sand2) }
+.pg-img { width:100%; height:100%; object-fit:contain; transition:transform .5s ease; display:block }
+.pg-cta { position:absolute; bottom:0; left:0; right:0; background:var(--ink); color:var(--sand2); font-family:var(--fs); font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; padding:11px 20px; text-align:center; opacity:0; transform:translateY(100%); transition:opacity .25s,transform .25s }
+.pg-info { padding:16px 18px 20px }
+.pg-name { font-family:var(--fd); font-size:17px; font-weight:400; color:var(--ink); margin-bottom:8px }
+.pg-price { font-family:var(--fs); font-size:13px; font-weight:600; color:var(--gold) }
+.pg-from { font-weight:300; color:var(--muted2); font-size:10px; margin-right:3px }
+
+/* ── MOBILE ── */
+@media (max-width:768px) {
+  .snav { padding:10px 16px; height:auto; flex-wrap:wrap; gap:0 }
+  .snav-brand { flex:1 }
+  .snav-logo { font-size:16px }
+  .snav-sub { font-size:7px }
+  .snav-cta { padding:8px 12px; font-size:9px }
+  .snav-links { display:flex; flex-wrap:wrap; gap:6px 14px; width:100%; margin-top:8px; padding-top:8px; border-top:0.5px solid var(--border) }
+  .snav-links a { font-size:10px }
+  .page-header { padding:40px 16px 32px }
+  .page-header-title { font-size:36px }
+  .page-header-sub { font-size:14px }
+  .product-grid { grid-template-columns:1fr 1fr; gap:8px }
+  .pg-img-wrap { height:140px }
+  .pg-name { font-size:13px }
+  .sfooter { padding:40px 16px 24px }
+  .sfooter-top { grid-template-columns:1fr; gap:28px }
+  .sfooter-bottom { flex-direction:column; gap:12px; text-align:center }
+}
+
+.cat-filter{display:flex;gap:2px;padding:24px 80px 0;flex-wrap:wrap}
+.cat-filter-btn{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:10px 20px;border:1px solid var(--border2);transition:all .2s}
+.cat-filter-btn:hover,.cat-filter-btn.active{background:var(--ink);color:var(--sand2);border-color:var(--ink)}
+.search-wrap{padding:16px 80px 0}
+.search-input{max-width:400px;width:100%;padding:12px 18px;border:1px solid var(--border2);background:var(--white);font-family:var(--fm);font-size:11px;letter-spacing:.08em;outline:none;color:var(--ink)}
+.search-input:focus{border-color:var(--gold)}
+.search-input::placeholder{color:var(--muted2)}
+.products-section{padding:24px 80px 80px}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.pg-card{background:var(--white);border:1px solid var(--border);overflow:hidden;text-decoration:none;display:block;transition:border-color .3s,transform .3s}
+.pg-card:hover{border-color:var(--border-gold);transform:translateY(-2px)}
+.pg-card:hover .pg-img{transform:scale(1.04)}
+.pg-card:hover .pg-cta{opacity:1;transform:translateY(0)}
+/* Default contain - good for Pokemon logos */
+.pg-img-wrap{height:180px;overflow:hidden;position:relative;background:var(--sand2);display:flex;align-items:center;justify-content:center;padding:8px}
+.pg-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:transform .5s ease;display:block}
+/* Lorcana/OP style - fill with slight padding */
+.pg-img-wrap.fill{padding:0;height:180px}
+.pg-img-wrap.fill .pg-img{width:100%;height:100%;object-fit:cover;max-width:none;max-height:none}
+.pg-cta{position:absolute;bottom:0;left:0;right:0;background:var(--ink);color:var(--sand2);font-family:var(--fs);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:11px 20px;text-align:center;opacity:0;transform:translateY(100%);transition:opacity .25s,transform .25s}
+.pg-info{padding:14px 16px 18px}
+.pg-name{font-family:var(--fd);font-size:16px;font-weight:400;color:var(--ink);margin-bottom:6px}
+.pg-price{font-family:var(--fs);font-size:13px;font-weight:600;color:var(--gold)}
+.pg-from{font-weight:300;color:var(--muted2);font-size:10px;margin-right:3px}
+.pg-card.hidden{display:none}
+
+/* PAGE HEADER */
+.page-header{display:grid;grid-template-columns:1fr 380px;min-height:260px;border-bottom:1px solid var(--border)}
+.page-header-left{padding:64px 80px;display:flex;flex-direction:column;justify-content:center}
+.page-header-right{position:relative;overflow:hidden;background:var(--sand2)}
+.page-header-right-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.page-header-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--parchment) 0%,rgba(250,247,240,.5) 35%,transparent 100%)}
+/* NUMBER - gold, massive, impossible to miss */
+.page-header-right-badge{
+  position:absolute;
+  bottom:0; right:0;
+  padding:24px 28px;
+  text-align:right;
+  z-index:10;
+  background:linear-gradient(135deg,transparent 0%,rgba(14,12,8,.45) 100%);
+}
+.page-header-right-num{
+  font-family:var(--fd);
+  font-size:120px;
+  font-weight:600;
+  font-style:italic;
+  color:var(--gold3);
+  line-height:.9;
+  letter-spacing:-.02em;
+  display:block;
+  filter:drop-shadow(0 2px 8px rgba(14,12,8,.6));
+}
+.page-header-right-label{
+  font-family:var(--fm);
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-top:10px;
+  display:block;
+  filter:drop-shadow(0 1px 4px rgba(14,12,8,.8));
+}
+
+/* Dark variant */
+.page-header.dark{background:var(--ink2)}
+.page-header.dark .page-header-left{background:var(--ink2)}
+.page-header.dark .page-header-right{background:var(--ink)}
+.page-header.dark .page-header-right-img{opacity:.3}
+.page-header.dark .page-header-right-overlay{background:linear-gradient(to right,var(--ink2) 0%,rgba(14,12,8,.5) 35%,transparent 100%)}
+
+.page-header-tag{font-family:var(--fm);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:flex;align-items:center;gap:14px}
+.page-header-tag::before{content:'';width:32px;height:1px;background:var(--gold);display:block}
+.page-header.dark .page-header-tag{color:var(--gold3)}
+.page-header-title{font-family:var(--fd);font-size:clamp(44px,5.5vw,76px);font-weight:300;font-style:italic;color:var(--ink);line-height:.9;letter-spacing:-.01em;margin-bottom:18px}
+.page-header.dark .page-header-title{color:var(--sand)}
+.page-header-sub{font-family:var(--fd);font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:440px}
+.page-header.dark .page-header-sub{color:rgba(237,232,216,.55)}
+
+@media(max-width:768px){
+  .page-header{grid-template-columns:1fr;min-height:0}
+  .page-header-left{padding:40px 16px 28px}
+  .page-header-right{height:140px}
+  .page-header-right-overlay{background:linear-gradient(to bottom,var(--parchment) 0%,transparent 60%)}
+  .page-header.dark .page-header-right-overlay{background:linear-gradient(to bottom,var(--ink2) 0%,transparent 60%)}
+  .page-header-right-num{font-size:72px}
+  .cat-filter{padding:14px 12px 0;gap:6px}
+  .cat-filter-btn{font-size:9px;padding:8px 12px}
+  .search-wrap{padding:12px 12px 0}
+  .search-input{max-width:100%}
+  .products-section{padding:16px 12px 48px}
+  .product-grid{grid-template-columns:1fr 1fr;gap:6px}
+  .pg-img-wrap{height:120px;padding:6px}
+  .pg-img-wrap.fill{padding:0;height:120px}
+  .pg-name{font-size:13px}
+}
+</style></head><body><nav class="snav"><a href="https://www.stickachu.com.au" class="snav-brand"><span class="snav-logo">Stickachu</span><span class="snav-sub">Evolve your collection</span></a><ul class="snav-links"><li><a href="https://www.stickachu.com.au/category/all-products" >Shop</a></li><li><a href="https://www.stickachu.com.au/pokemon-tcg" >Pokémon TCG</a></li><li><a href="https://www.stickachu.com.au/category/one-piece" >One Piece CCG</a></li><li><a href="https://www.stickachu.com.au/category/lorcana" >Lorcana</a></li><li><a href="https://www.stickachu.com.au/category/pokemon-tcg-japanese" >Pokémon TCG Japanese</a></li><li><a href="https://www.stickachu.com.au/category/simplified-chinese" class="active">Simplified Chinese</a></li><li><a href="https://www.stickachu.com.au/category/magic-the-gathering" >Magic: The Gathering</a></li></ul><a href="https://www.stickachu.com.au/category/all-products" class="snav-cta">Shop Now</a></nav><div class="page-header">
+  <div class="page-header-left">
+    <div class="page-header-tag">Browse Collection</div>
+    <h1 class="page-header-title">Simplified<br><em style="color:var(--gold)">Chinese</em></h1>
+    <p class="page-header-sub">Stickers and keychains for every Pokémon TCG Simplified Chinese Gem Pack release.</p>
+  </div>
+  <div class="page-header-right">
+    <img class="page-header-right-img" src="https://static.wixstatic.com/media/b67b35_eb885e64808048d4b8b54b2b1a6207b4~mv2.png/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="" onerror="this.style.opacity='0'">
+    <div class="page-header-right-overlay"></div>
+    <div class="page-header-right-badge">
+      <span class="page-header-right-num">5</span>
+      <span class="page-header-right-label">Japanese Sets</span>
+    </div>
+  </div>
+</div><div class="search-wrap"><input class="search-input" id="searchInput" type="text" placeholder="Search sets..."></div><div class="products-section"><div class="product-grid"><a href="https://www.stickachu.com.au/product-page/gem-pack-vol-1" class="pg-card"><div class="pg-img-wrap"><img class="pg-img" src="https://static.wixstatic.com/media/b67b35_92eee81f5795474a9324367bdb44bdfc~mv2.jpg/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="Gem Pack Vol.1" onerror="this.parentNode.style.background='var(--sand3)';this.style.display='none'"><div class="pg-cta">View Product</div></div><div class="pg-info"><div class="pg-name">Gem Pack Vol.1</div><div class="pg-price"><span class="pg-from">from</span>AUD$6.00</div></div></a><a href="https://www.stickachu.com.au/product-page/gem-pack-vol-2" class="pg-card"><div class="pg-img-wrap"><img class="pg-img" src="https://static.wixstatic.com/media/b67b35_9457d917e953429bb6e450eac5beae31~mv2.png/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="Gem Pack Vol.2" onerror="this.parentNode.style.background='var(--sand3)';this.style.display='none'"><div class="pg-cta">View Product</div></div><div class="pg-info"><div class="pg-name">Gem Pack Vol.2</div><div class="pg-price"><span class="pg-from">from</span>AUD$6.00</div></div></a><a href="https://www.stickachu.com.au/product-page/gem-pack-vol-3" class="pg-card"><div class="pg-img-wrap"><img class="pg-img" src="https://static.wixstatic.com/media/b67b35_907f89846a1244b7865ef57c9bc993ff~mv2.png/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="Gem Pack Vol.3" onerror="this.parentNode.style.background='var(--sand3)';this.style.display='none'"><div class="pg-cta">View Product</div></div><div class="pg-info"><div class="pg-name">Gem Pack Vol.3</div><div class="pg-price"><span class="pg-from">from</span>AUD$6.00</div></div></a><a href="https://www.stickachu.com.au/product-page/gem-pack-vol-34" class="pg-card"><div class="pg-img-wrap"><img class="pg-img" src="https://static.wixstatic.com/media/b67b35_0da459b5c8c44ff48183ef35572fcc26~mv2.png/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="Gem Pack Vol.4" onerror="this.parentNode.style.background='var(--sand3)';this.style.display='none'"><div class="pg-cta">View Product</div></div><div class="pg-info"><div class="pg-name">Gem Pack Vol.4</div><div class="pg-price"><span class="pg-from">from</span>AUD$6.00</div></div></a><a href="https://www.stickachu.com.au/product-page/gem-pack-vol-5" class="pg-card"><div class="pg-img-wrap"><img class="pg-img" src="https://static.wixstatic.com/media/b67b35_eb885e64808048d4b8b54b2b1a6207b4~mv2.png/v1/fit/w_800,h_500,q_85,enc_avif/file.png" alt="Gem Pack Vol.5" onerror="this.parentNode.style.background='var(--sand3)';this.style.display='none'"><div class="pg-cta">View Product</div></div><div class="pg-info"><div class="pg-name">Gem Pack Vol.5</div><div class="pg-price"><span class="pg-from">from</span>AUD$6.00</div></div></a></div></div></div><footer class="sfooter"><div class="sfooter-top"><div><div class="sfooter-logo">Stickachu</div><div class="sfooter-sub">Evolve Your Collection</div><p class="sfooter-desc">Premium stickers and keychains for trading card game collectors, wherever you are in the world.</p><div class="sfooter-socials"><a href="https://www.instagram.com/sticka_chu/" class="sfooter-soc">IG</a><a href="https://www.tiktok.com/@sticka_chu" class="sfooter-soc">TT</a></div></div><div class="sfooter-col"><div class="sfooter-col-h">Shop</div><ul><li><a href="https://www.stickachu.com.au/category/all-products">All Products</a></li><li><a href="https://www.stickachu.com.au/pokemon-tcg">Pokémon TCG</a></li><li><a href="https://www.stickachu.com.au/category/one-piece">One Piece CCG</a></li><li><a href="https://www.stickachu.com.au/category/lorcana">Lorcana</a></li><li><a href="https://www.stickachu.com.au/category/pokemon-tcg-japanese">Pokémon TCG Japanese</a></li><li><a href="https://www.stickachu.com.au/category/simplified-chinese">Simplified Chinese</a></li><li><a href="https://www.stickachu.com.au/category/magic-the-gathering">Magic: The Gathering</a></li></ul></div><div class="sfooter-col"><div class="sfooter-col-h">Collections</div><ul><li><a href="https://www.stickachu.com.au/pokemon-tcg">Scarlet &amp; Violet</a></li><li><a href="https://www.stickachu.com.au/pokemon-tcg">Sword &amp; Shield</a></li><li><a href="https://www.stickachu.com.au/pokemon-tcg">Sun &amp; Moon</a></li><li><a href="https://www.stickachu.com.au/pokemon-tcg">Base Set</a></li></ul></div><div class="sfooter-col"><div class="sfooter-col-h">Info</div><ul><li><a href="https://www.instagram.com/sticka_chu/">Contact Us</a></li><li><a href="https://www.stickachu.com.au">About Stickachu</a></li><li><a href="https://www.instagram.com/sticka_chu/">Custom Orders</a></li></ul></div></div><div class="sfooter-bottom"><p class="sfooter-legal">Stickachu is not affiliated with any trading-card or media company. Names, logos, and characters are used solely so you know what we make — they are not ours.</p><div class="sfooter-copy">© 2025 Stickachu</div></div></footer><script>document.querySelectorAll('a').forEach(function(l){var h=l.getAttribute('href');if(h&&!h.startsWith('mailto')&&!h.startsWith('tel')&&!h.startsWith('javascript')&&!h.startsWith('#')){l.setAttribute('target','_parent');}});const inp=document.getElementById('searchInput');if(inp){inp.addEventListener('input',function(){const q=this.value.toLowerCase().trim();document.querySelectorAll('.pg-card').forEach(function(c){const n=c.querySelector('.pg-name').textContent.toLowerCase();c.classList.toggle('hidden',q.length>0&&!n.includes(q));});});}</script></body></html>
