@@ -85,13 +85,13 @@ body { background:var(--parchment); color:var(--ink); font-family:var(--fs); lin
 
 /* ── MOBILE ── */
 @media (max-width:768px) {
-  .snav { padding:10px 16px; height:auto; flex-wrap:wrap; gap:0 }
+  .snav { padding:8px 14px; height:auto; flex-wrap:wrap; gap:0; position:static }
   .snav-brand { flex:1 }
-  .snav-logo { font-size:16px }
+  .snav-logo { font-size:15px }
   .snav-sub { font-size:7px }
-  .snav-cta { padding:8px 12px; font-size:9px }
-  .snav-links { display:flex; flex-wrap:wrap; gap:6px 14px; width:100%; margin-top:8px; padding-top:8px; border-top:0.5px solid var(--border) }
-  .snav-links a { font-size:10px }
+  .snav-cta { padding:7px 10px; font-size:9px; white-space:nowrap }
+  .snav-links { display:flex; flex-wrap:wrap; gap:4px 10px; width:100%; margin-top:6px; padding-top:6px; border-top:0.5px solid var(--border) }
+  .snav-links a { font-size:9px; letter-spacing:.06em }
   .page-header { padding:40px 16px 32px }
   .page-header-title { font-size:36px }
   .page-header-sub { font-size:14px }
