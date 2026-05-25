@@ -16,7 +16,8 @@
   --fs: 'Syne',sans-serif; --fm: 'DM Mono',monospace;
 }
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth }
+html { scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
+html::-webkit-scrollbar { display:none; }
 body { background:var(--parchment); color:var(--ink); font-family:var(--fs); line-height:1.6; overflow-x:hidden; cursor:none }
 
 /* CURSOR */
@@ -181,22 +182,6 @@ body::after { content:''; position:fixed; inset:0; opacity:.025; background-imag
 .stat-n { font-family:var(--fd); font-size:62px; font-weight:300; font-style:italic; color:var(--gold); line-height:.9; margin-bottom:10px; letter-spacing:-.02em }
 .stat-l { font-family:var(--fm); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted2) }
 
-/* SOCIAL */
-.social { padding:100px 80px; text-align:center; border-top:1px solid var(--border) }
-.social-tag { font-family:var(--fm); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; display:inline-flex; align-items:center; gap:14px }
-.social-tag::before,.social-tag::after { content:''; display:block; width:32px; height:1px; background:var(--gold) }
-.social-h { font-family:var(--fd); font-size:clamp(34px,4vw,58px); font-weight:300; font-style:italic; color:var(--ink); margin-bottom:10px }
-.social-handle { font-family:var(--fm); font-size:11px; letter-spacing:.14em; color:var(--muted2); margin-bottom:52px }
-.social-handle a { color:var(--gold); text-decoration:none }
-.social-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; margin-bottom:44px }
-.simg { aspect-ratio:1; overflow:hidden; position:relative }
-.simg img { width:100%; height:100%; object-fit:cover; transition:transform .5s,filter .3s; filter:none }
-.simg:hover img { transform:scale(1.08); filter:none }
-.simg-ov { position:absolute; inset:0; background:rgba(14,12,8,0); transition:background .3s; display:flex; align-items:center; justify-content:center }
-.simg:hover .simg-ov { background:rgba(14,12,8,.3) }
-.simg-ov span { font-family:var(--fm); font-size:11px; letter-spacing:.12em; color:#fff; opacity:0; transition:opacity .3s }
-.simg:hover .simg-ov span { opacity:1 }
-
 /* FOOTER */
 footer { background:var(--ink); color:var(--sand2); padding:80px 80px 40px }
 .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:64px; padding-bottom:60px; border-bottom:1px solid rgba(255,255,255,.07); margin-bottom:36px }
@@ -247,76 +232,17 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
 
 .pc:nth-child(9) { grid-column: span 3 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 768px) {
-
-  /* ── NAV ── */
-  .site-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 10px 16px;
-    height: auto;
-    gap: 0;
-    position: relative;
-  }
+  .site-nav { display: flex; flex-wrap: wrap; align-items: center; padding: 10px 16px; height: auto; gap: 0; position: relative; }
   .nav-brand { flex: 1 }
   .nav-logo { font-size: 16px }
   .nav-sub { font-size: 7px }
   .nav-cta { padding: 8px 12px; font-size: 9px }
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 14px;
-    list-style: none;
-    width: 100%;
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 0.5px solid var(--border);
-  }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 6px 14px; list-style: none; width: 100%; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid var(--border); }
   .nav-links a { font-size: 10px; letter-spacing: .05em }
-
-  /* ── HERO — STACK ── */
-  .hero {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: 0 !important;
-    padding-top: 0 !important;
-  }
-  .hero-l {
-    order: 2;
-    padding: 28px 16px 24px;
-    background: var(--parchment);
-  }
-  .hero-r {
-    order: 1;
-    height: 260px !important;
-    min-height: 0 !important;
-    position: relative;
-  }
+  .hero { display: flex !important; flex-direction: column !important; height: auto !important; min-height: 0 !important; padding-top: 0 !important; }
+  .hero-l { order: 2; padding: 28px 16px 24px; background: var(--parchment); }
+  .hero-r { order: 1; height: 260px !important; min-height: 0 !important; position: relative; }
   .hero-h1 { font-size: 36px; line-height: 0.92 }
   .hero-tag { font-size: 8px; margin-bottom: 12px }
   .hero-rule { margin: 12px 0; width: 32px }
@@ -325,111 +251,50 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   .btn-ink { padding: 12px; font-size: 10px; width: 100%; text-align: center }
   .btn-ghost-link { font-size: 10px; text-align: center }
   .hero-foot { display: none }
-  .hero-badge {
-    position: absolute;
-    bottom: 12px; right: 12px;
-    min-width: 140px;
-    padding: 10px 14px;
-  }
+  .hero-badge { position: absolute; bottom: 12px; right: 12px; min-width: 140px; padding: 10px 14px; }
   .hero-badge-name { font-size: 14px }
   .hero-badge-tag { font-size: 7px }
   .hero-badge-vars { font-size: 7px }
   .hero-badge-price { font-size: 10px }
-
-  /* ── TICKER ── */
   .ticker-item { font-size: 11px; padding: 0 20px }
-
-  /* ── EDITORIAL ── */
-  .editorial {
-    display: block !important;
-    padding: 40px 16px;
-  }
+  .editorial { display: block !important; padding: 40px 16px; }
   .editorial > div:first-child { display: none }
-  .editorial-mobile-title {
-    display: block !important;
-    font-family: var(--fd);
-    font-size: 40px;
-    font-weight: 300;
-    line-height: 0.95;
-    color: var(--ink);
-    margin-bottom: 20px;
-  }
+  .editorial-mobile-title { display: block !important; font-family: var(--fd); font-size: 40px; font-weight: 300; line-height: 0.95; color: var(--ink); margin-bottom: 20px; }
   .editorial-label { display: none }
   .editorial-q { font-size: 20px; margin-bottom: 16px }
   .editorial-body { font-size: 13px }
-
-  /* ── PRODUCTS ── */
   .products { padding: 0 12px 40px }
   .sec-head { margin-bottom: 24px }
   .sec-title { font-size: 28px }
   .sec-meta { display: none }
   .view-all { font-size: 10px }
-
-  /* Product grid - 2 columns on mobile */
-  .pgrid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-  }
+  .pgrid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
   .pc:nth-child(1) { grid-column: span 2 !important; grid-row: span 1 !important }
   .pc:nth-child(1) .pc-img { height: 200px !important }
-  .pc:nth-child(2),
-  .pc:nth-child(3),
-  .pc:nth-child(4),
-  .pc:nth-child(5),
-  .pc:nth-child(6),
-  .pc:nth-child(7),
-  .pc:nth-child(8),
-  .pc:nth-child(9) { grid-column: span 1 !important }
+  .pc:nth-child(2),.pc:nth-child(3),.pc:nth-child(4),.pc:nth-child(5),.pc:nth-child(6),.pc:nth-child(7),.pc:nth-child(8),.pc:nth-child(9) { grid-column: span 1 !important }
   .pc-img { height: 120px !important }
   .pc-name { font-size: 11px }
-  .pc-type { font-size: 8px; letter-spacing: .03em }
   .pc-price { font-size: 12px }
   .pc-info { padding: 8px 10px 12px }
-  .pc-type { display: none }
-
-  /* ── KEYCHAIN — STACK ── */
-  .kf {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-  }
+  .kf { display: flex !important; flex-direction: column !important; min-height: 0 !important; }
   .kf-img { height: 260px !important; min-height: 0 !important; order: 1 }
   .kf-content { order: 2; padding: 32px 16px }
   .kf-title { font-size: 36px; margin-bottom: 14px }
   .kf-body { font-size: 13px; margin-bottom: 24px; max-width: 100% }
   .btn-gold-ol { padding: 12px 24px; font-size: 10px }
   .kf-content::before { display: none }
-
-  /* ── PROMO ── */
-  .promo {
-    flex-direction: column !important;
-    padding: 32px 16px;
-    gap: 20px;
-  }
+  .promo { flex-direction: column !important; padding: 32px 16px; gap: 20px; }
   .promo-h { font-size: 32px }
   .promo-r { flex-direction: column; gap: 16px; width: 100% }
   .btn-ink-solid { width: 100%; text-align: center; padding: 14px }
-
-  /* ── CATEGORIES — STACK ── */
   .cats { padding: 40px 12px }
   .cats-title { font-size: 32px }
-  .cats-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
+  .cats-grid { display: flex !important; flex-direction: column !important; gap: 8px !important; }
   .cat { min-height: 240px !important }
   .cat-name { font-size: 32px }
   .cat-desc { font-size: 12px; max-width: 100% }
   .cat-content { padding: 20px 24px }
-
-  /* ── ABOUT — STACK ── */
-  .about {
-    display: flex !important;
-    flex-direction: column !important;
-    min-height: 0 !important;
-  }
+  .about { display: flex !important; flex-direction: column !important; min-height: 0 !important; }
   .about-l { padding: 40px 16px }
   .about-l::after { display: none }
   .about-r { padding: 0 16px 40px }
@@ -437,53 +302,37 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   .about-body { font-size: 13px; max-width: 100% }
   .stats { grid-template-columns: 1fr 1fr !important; width: 100% }
   .stat-n { font-size: 40px }
-  .stat-label { font-size: 8px }
   .stat { padding: 20px 16px }
   .about-disc { font-size: 9px; max-width: 100% }
-
-  /* ── FOOTER — STACK ── */
   footer { padding: 40px 16px 24px }
-  .footer-top {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 28px !important;
-  }
-  .footer-bottom {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
+  .footer-top { display: flex !important; flex-direction: column !important; gap: 28px !important; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-legal { max-width: 100%; font-size: 9px }
-
-  /* ── GLOBAL OVERFLOW FIX ── */
   body { overflow-x: hidden !important }
   img { max-width: 100% !important }
   * { box-sizing: border-box }
 }
-
 </style>
 </head>
 <body>
 
-
-
-
-
-
-<!-- HERO -->
 <div class="site-nav">
   <a href="https://www.stickachu.com.au" class="nav-brand">
     <span class="nav-logo">Stickachu</span>
     <span class="nav-sub">Evolve your collection</span>
   </a>
   <ul class="nav-links">
-    <li><a href="https://www.stickachu.com.au/category/all-products">Shop</a></li>
+    <li><a href="https://www.stickachu.com.au/all-products">Shop</a></li>
     <li><a href="https://www.stickachu.com.au/pokemon-tcg">Pokémon TCG</a></li>
-    <li><a href="https://www.stickachu.com.au/category/one-piece">One Piece CCG</a></li>
-    <li><a href="https://www.stickachu.com.au/category/japanese">Japanese</a></li>
+    <li><a href="https://www.stickachu.com.au/one-piece">One Piece CCG</a></li>
+    <li><a href="https://www.stickachu.com.au/lorcana">Lorcana</a></li>
+    <li><a href="https://www.stickachu.com.au/japanese">Pokémon TCG Japanese</a></li>
+    <li><a href="https://www.stickachu.com.au/simplified-chinese">Simplified Chinese</a></li>
+    <li><a href="https://www.stickachu.com.au/mtg">Magic: The Gathering</a></li>
   </ul>
-  <a href="https://www.stickachu.com.au/category/all-products" class="nav-cta">Shop Now</a>
+  <a href="https://www.stickachu.com.au/all-products" class="nav-cta">Shop Now</a>
 </div>
+
 <section class="hero">
   <div class="hero-l">
     <p class="hero-tag">New Season — 2025 Collection</p>
@@ -491,8 +340,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
     <div class="hero-rule"></div>
     <p class="hero-sub">Premium stickers and keychains for trading card game collectors — crafted to match your collection, in your language.</p>
     <div class="hero-btns">
-      <a href="https://www.stickachu.com.au/category/all-products" class="btn-ink">Explore the Collection</a>
-      <a href="https://www.stickachu.com.au/category/most-popular" class="btn-ghost-link">Most Popular →</a>
+      <a href="https://www.stickachu.com.au/all-products" class="btn-ink">Explore the Collection</a>
+      <a href="https://www.stickachu.com.au/all-products" class="btn-ghost-link">Most Popular →</a>
     </div>
     <div class="hero-foot">Pokémon · One Piece · Lorcana · Magic: The Gathering · YuGiOh · &amp; More</div>
   </div>
@@ -508,7 +357,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item"><span class="star">✦</span>Pokémon TCG</span>
@@ -530,7 +378,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </div>
 
-<!-- EDITORIAL -->
 <div class="editorial">
   <div>
     <div class="editorial-label">Our Philosophy</div>
@@ -543,84 +390,52 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </div>
 
-<!-- PRODUCTS -->
 <div class="products">
   <div class="sec-head">
     <h2 class="sec-title">Most Popular</h2>
     <span class="sec-meta">— 211 Products Available</span>
-    <a href="https://www.stickachu.com.au/category/all-products" class="view-all">View All →</a>
+    <a href="https://www.stickachu.com.au/all-products" class="view-all">View All →</a>
   </div>
   <div class="pgrid">
-
     <a href="https://www.stickachu.com.au/product-page/pitch-black" class="pc">
-      <div class="pc-img">
-        <img src="https://static.wixstatic.com/media/b67b35_e1f363453f664db0a64247454e8e7079~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Pitch Black" onerror="this.style.display='none'">
-        <div class="pc-cta">Add to Cart</div>
-      </div>
-      <div class="pc-info">
-        <div class="pc-name">Pitch Black</div>
-        <div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div>
-        <div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div>
-      </div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_e1f363453f664db0a64247454e8e7079~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Pitch Black" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Pitch Black</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/phantasmal-flames" class="pc">
-      <div class="pc-img">
-        <img src="https://static.wixstatic.com/media/b67b35_db6f2b1560154ab68aa888f43ef27b70~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Phantasmal Flames" onerror="this.style.display='none'">
-        <div class="pc-cta">Add to Cart</div>
-      </div>
-      <div class="pc-info"><div class="pc-name">Phantasmal Flames</div><div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_db6f2b1560154ab68aa888f43ef27b70~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Phantasmal Flames" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Phantasmal Flames</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/gem-pack-vol-5" class="pc">
-      <div class="pc-img">
-        <img src="https://static.wixstatic.com/media/b67b35_eb885e64808048d4b8b54b2b1a6207b4~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Gem Pack Vol.5" onerror="this.style.display='none'">
-        <div class="pc-cta">Add to Cart</div>
-      </div>
-      <div class="pc-info"><div class="pc-name">Gem Pack Vol.5</div><div class="pc-type">Simplified Chinese</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_eb885e64808048d4b8b54b2b1a6207b4~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Gem Pack Vol.5" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Gem Pack Vol.5</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/destined-rivals" class="pc">
-      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_b39891e7e67d4f34a00e898a6cd332fe~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Destined Rivals" onerror="this.style.display='none'"><div class="pc-cta">Add to Cart</div></div>
-      <div class="pc-info"><div class="pc-name">Destined Rivals</div><div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_b39891e7e67d4f34a00e898a6cd332fe~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Destined Rivals" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Destined Rivals</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/prismatic-evolutions" class="pc">
-      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_0991827738074787a362e49ba59f86ab~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Prismatic Evolutions" onerror="this.style.display='none'"><div class="pc-cta">Add to Cart</div></div>
-      <div class="pc-info"><div class="pc-name">Prismatic Evolutions</div><div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_0991827738074787a362e49ba59f86ab~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Prismatic Evolutions" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Prismatic Evolutions</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/surging-sparks" class="pc">
-      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_cd9e07bd2176485caf5bffda2a9d4b9d~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Surging Sparks" onerror="this.style.display='none'"><div class="pc-cta">Add to Cart</div></div>
-      <div class="pc-info"><div class="pc-name">Surging Sparks</div><div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_cd9e07bd2176485caf5bffda2a9d4b9d~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Surging Sparks" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Surging Sparks</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/journey-together" class="pc">
-      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_720cb1a4f04d4fc19af2bd76bf4314d6~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Journey Together" onerror="this.style.display='none'"><div class="pc-cta">Add to Cart</div></div>
-      <div class="pc-info"><div class="pc-name">Journey Together</div><div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_720cb1a4f04d4fc19af2bd76bf4314d6~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Journey Together" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Journey Together</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
     <a href="https://www.stickachu.com.au/product-page/base-set" class="pc">
-      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_da3d35b3eb0c4c66859be254d7e0ccb8~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Base Set" onerror="this.style.display='none'"><div class="pc-cta">Add to Cart</div></div>
-      <div class="pc-info"><div class="pc-name">Base Set</div><div class="pc-type">Classic · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_da3d35b3eb0c4c66859be254d7e0ccb8~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Base Set" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Base Set</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
-
-
     <a href="https://www.stickachu.com.au/product-page/ascended-heroes" class="pc">
-      <div class="pc-img">
-        <img src="https://static.wixstatic.com/media/b67b35_dc08d137006a43e6b7369b6cd706d475~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Ascended Heroes" onerror="this.style.display='none'">
-        <div class="pc-cta">Add to Cart</div>
-      </div>
-      <div class="pc-info">
-        <div class="pc-name">Ascended Heroes</div>
-        <div class="pc-type">Scarlet &amp; Violet · EN · JP · SC · TW · KR · DE · FR · IT · ES · PT</div>
-        <div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div>
-      </div>
+      <div class="pc-img"><img src="https://static.wixstatic.com/media/b67b35_dc08d137006a43e6b7369b6cd706d475~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Ascended Heroes" onerror="this.style.display='none'"><div class="pc-cta">View Product</div></div>
+      <div class="pc-info"><div class="pc-name">Ascended Heroes</div><div class="pc-price"><span class="pc-from">from</span>AUD$6.00</div></div>
     </a>
   </div>
 </div>
 
-<!-- KEYCHAIN FEATURE -->
 <div class="kf">
   <div class="kf-img">
     <img src="https://static.wixstatic.com/media/b67b35_49536f23aed747a3a7d268b81488ac56~mv2.png/v1/crop/x_0,y_26,w_940,h_737,q_90,enc_avif,quality_auto/b67b35_49536f23aed747a3a7d268b81488ac56~mv2.png" alt="Keychains">
@@ -630,11 +445,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
     <div class="kf-tag">Signature Product</div>
     <h2 class="kf-title">Spine<br>Keychains.</h2>
     <p class="kf-body">Our most iconic product. Each keychain clips onto your binder spine, displaying the exact set symbol of your collection. Available for every major TCG release — English and Japanese.</p>
-    <a href="https://www.stickachu.com.au/category/all-products" class="btn-gold-ol">Shop Keychains</a>
+    <a href="https://www.stickachu.com.au/all-products" class="btn-gold-ol">Shop Keychains</a>
   </div>
 </div>
 
-<!-- PROMO -->
 <div class="promo">
   <div class="promo-l">
     <div class="promo-over">Limited Time Offer</div>
@@ -645,19 +459,18 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
       <div class="promo-code-label">Use code at checkout</div>
       <div class="promo-code">20FIRST</div>
     </div>
-    <a href="https://www.stickachu.com.au/category/all-products" class="btn-ink-solid">Shop Now</a>
+    <a href="https://www.stickachu.com.au/all-products" class="btn-ink-solid">Shop Now</a>
   </div>
 </div>
 
-<!-- CATEGORIES -->
 <div class="cats">
   <div class="cats-head">
     <h2 class="cats-title">Shop by<br><em>Universe.</em></h2>
-    <a href="https://www.stickachu.com.au/category/all-products" class="view-all">All Categories →</a>
+    <a href="https://www.stickachu.com.au/all-products" class="view-all">All Categories →</a>
   </div>
   <div class="cats-grid">
     <a href="https://www.stickachu.com.au/pokemon-tcg" class="cat">
-    <img src="https://static.wixstatic.com/media/b67b35_e1f363453f664db0a64247454e8e7079~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Pokémon TCG" onerror="this.style.opacity='.15'">
+      <img src="https://static.wixstatic.com/media/b67b35_e1f363453f664db0a64247454e8e7079~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="Pokémon TCG" onerror="this.style.opacity='.15'">
       <div class="cat-ov"></div>
       <div class="cat-content">
         <div class="cat-tag">Browse · 180+ Sets</div>
@@ -666,8 +479,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
         <span class="cat-link">Shop Pokémon →</span>
       </div>
     </a>
-    <a href="https://www.stickachu.com.au/category/one-piece" class="cat">
-    <img src="https://static.wixstatic.com/media/b67b35_f488382eb53f47e39228797bd2cfc9b3~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="One Piece CCG" onerror="this.style.opacity='.15'">
+    <a href="https://www.stickachu.com.au/one-piece" class="cat">
+      <img src="https://static.wixstatic.com/media/b67b35_f488382eb53f47e39228797bd2cfc9b3~mv2.png/v1/fill/w_800,h_400,al_c,q_85,enc_avif,quality_auto/file.png" alt="One Piece CCG" onerror="this.style.opacity='.15'">
       <div class="cat-ov"></div>
       <div class="cat-content">
         <div class="cat-tag">Browse · All Sets</div>
@@ -679,7 +492,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="about">
   <div class="about-l">
     <div class="about-tag">Our Story</div>
@@ -698,7 +510,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -713,21 +524,22 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
     <div class="footer-col">
       <div class="footer-col-h">Shop</div>
       <ul>
-        <li><a href="https://www.stickachu.com.au/category/all-products">All Products</a></li>
+        <li><a href="https://www.stickachu.com.au/all-products">All Products</a></li>
         <li><a href="https://www.stickachu.com.au/pokemon-tcg">Pokémon TCG</a></li>
-        <li><a href="https://www.stickachu.com.au/category/one-piece">One Piece CCG</a></li>
-        <li><a href="https://www.stickachu.com.au/category/japanese">Japanese</a></li>
-        <li><a href="https://www.stickachu.com.au/category/most-popular">Most Popular</a></li>
+        <li><a href="https://www.stickachu.com.au/one-piece">One Piece CCG</a></li>
+        <li><a href="https://www.stickachu.com.au/lorcana">Lorcana</a></li>
+        <li><a href="https://www.stickachu.com.au/japanese">Pokémon TCG Japanese</a></li>
+        <li><a href="https://www.stickachu.com.au/simplified-chinese">Simplified Chinese</a></li>
+        <li><a href="https://www.stickachu.com.au/mtg">Magic: The Gathering</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <div class="footer-col-h">Collections</div>
       <ul>
-        <li><a href="https://www.stickachu.com.au/category/scarlet-violet">Scarlet &amp; Violet</a></li>
-        <li><a href="https://www.stickachu.com.au/category/sword-shield">Sword &amp; Shield</a></li>
-        <li><a href="https://www.stickachu.com.au/category/sun-moon">Sun &amp; Moon</a></li>
-        <li><a href="https://www.stickachu.com.au/category/base-set">Base Set</a></li>
-        <li><a href="https://www.stickachu.com.au/category/untitled-xy">XY</a></li>
+        <li><a href="https://www.stickachu.com.au/pokemon-tcg">Scarlet &amp; Violet</a></li>
+        <li><a href="https://www.stickachu.com.au/pokemon-tcg">Sword &amp; Shield</a></li>
+        <li><a href="https://www.stickachu.com.au/pokemon-tcg">Sun &amp; Moon</a></li>
+        <li><a href="https://www.stickachu.com.au/pokemon-tcg">Base Set</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -745,7 +557,6 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 199; display: flex; a
   </div>
 </footer>
 
-
 <script>
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -756,47 +567,25 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.pc,.stat,.cat,.simg,.kf,.promo,.about,.social,.editorial').forEach(el => {
+document.querySelectorAll('.pc,.stat,.cat,.kf,.promo,.about,.editorial').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(22px)';
   el.style.transition = 'opacity .65s ease, transform .65s ease';
   io.observe(el);
 });
 
-
-
-// Auto-resize iframe to fit full content
 function sendHeight() {
-  const h = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
-  );
+  const h = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
   window.parent.postMessage({ type: 'stickachu-height', height: h }, '*');
 }
-
-// Send on load, after images load, and repeatedly until stable
 window.addEventListener('load', sendHeight);
 window.addEventListener('resize', sendHeight);
 document.addEventListener('DOMContentLoaded', sendHeight);
-
-// Keep checking until height stabilises
 let lastHeight = 0;
 const interval = setInterval(() => {
-  const h = Math.max(
-    document.body.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.scrollHeight,
-    document.documentElement.offsetHeight
-  );
-  if (h !== lastHeight) {
-    lastHeight = h;
-    window.parent.postMessage({ type: 'stickachu-height', height: h }, '*');
-  }
+  const h = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+  if (h !== lastHeight) { lastHeight = h; window.parent.postMessage({ type: 'stickachu-height', height: h }, '*'); }
 }, 200);
-
-// Stop checking after 10 seconds
 setTimeout(() => clearInterval(interval), 10000);
 </script>
 </body>
